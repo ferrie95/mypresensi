@@ -949,45 +949,43 @@
               </div>
             </div>
           </div>
-        <!-- content-wrapper ends -->
-        @include('partials.footer')
-      </div>
-      <!-- main-panel ends -->
-    </div>   
-    <!-- page-body-wrapper ends -->
+          <!-- content-wrapper ends -->
+          @include('partials.footer')
+        </div>
+        <!-- main-panel ends -->
+      </div>   
+      <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-
   @include('partials.scripts')
-
 </body>
 
 </html>
 <script>
-  $(document).ready(function () {
-    $('#logoutButton').on('click', function () {
-        // Ambil CSRF Token
-        var token = $('meta[name="csrf-token"]').attr('content');
+$(document).ready(function () {
+  $('#logoutButton').on('click', function () {
+      // Ambil CSRF Token
+      var token = $('meta[name="csrf-token"]').attr('content');
 
-        // AJAX request
-        $.ajax({
-            url: "{{ route('logout') }}",
-            type: "POST",
-            data: {
-                _token: token
-            },
-            success: function (response) {
-              window.location.href = '/login'; // Redirect to login page
-            },
-            error: function (xhr, status, error) {
-                Swal.fire({
-                    title: 'Error',
-                    text: 'Something went wrong, please try again.',
-                    icon: 'error'
-                });
-            }
-        });
-    });
+      // AJAX request
+      $.ajax({
+          url: "{{ route('logout') }}",
+          type: "POST",
+          data: {
+              _token: token
+          },
+          success: function (response) {
+            window.location.href = '/login'; // Redirect to login page
+          },
+          error: function (xhr, status, error) {
+              Swal.fire({
+                  title: 'Error',
+                  text: 'Something went wrong, please try again.',
+                  icon: 'error'
+              });
+          }
+      });
+  });
 });
 
 </script>

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Absensi;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class AbsensiOnlineController extends Controller

@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\AbsensiOnlineController;
+use App\Http\Controllers\Absensi\AbsensiOnlineController;
+use App\Http\Controllers\Master\MasterEmployeeController;
 
 // Route untuk halaman login dan register (tanpa middleware 'auth')
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -25,5 +26,15 @@ Route::get('/', function () {
 
 
 //Absensi Online
-Route::get('/absensi/absensi_online', [AbsensiOnlineController::class, 'index'])->name('index');
-Route::post('/absensi/absensi_online/store', [AbsensiOnlineController::class, 'store'])->name('store');
+Route::middleware(['web', 'auth'])->group(function () {
+    Route::get('/absensi/absensi_online', [AbsensiOnlineController::class, 'index'])->name('index');
+    Route::post('/absensi/absensi_online/store', [AbsensiOnlineController::class, 'store'])->name('store');
+});
+
+
+//Master Karyawan
+Route::middleware(['web', 'auth'])->group(function () {
+    Route::get('/master/employee', [MasterEmployeeController::class, 'index'])->name('index');
+    Route::post('/master/employee/store', [MasterEmployeeController::class, 'store'])->name('store');
+});
+

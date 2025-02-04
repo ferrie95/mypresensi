@@ -12,7 +12,10 @@ class Employee extends Model implements AuthenticatableContract
     use HasFactory, Authenticatable;
 
     // Kolom yang bisa diisi
-    protected $fillable = ['nik', 'name', 'password'];
+    protected $fillable = [
+        'nik', 'name', 'password', 'work_role', 'kantor_cabang', 'gender',
+        'department', 'rank', 'date_birth', 'region', 'phone_number', 'active'
+    ];
 
     // Sembunyikan kolom tertentu
     protected $hidden = ['password'];
